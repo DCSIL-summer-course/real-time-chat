@@ -5,7 +5,8 @@
 
   <!-- JavaScript -->
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
-
+  
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
   <script type="text/javascript" src="/js/angular-socket.min.js"></script>
   <script type="text/javascript" src="/js/app.js"></script>
 
@@ -17,7 +18,7 @@
 </head>
 <body>
   <nav class="navbar navbar-inverse navbar-fixed-top" ng-include="'templates/nav.html'"></nav>
-  
+
   <div ng-controller="ChatCtrl">
     <div class="row" ng-include="'templates/sidebar.html'"></div>
     <div class="main" ng-include="'templates/main.html'"></div>
