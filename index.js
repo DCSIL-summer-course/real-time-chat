@@ -21,6 +21,12 @@ function broadcastUsers(){
   });
 }
 
+function broadcastNewMessage(msg){
+  _.each(sockets, function(socket){
+    socket.emit('new-message', msg);
+  });
+}
+
 io.on('connection', function(socket){
   var name;
   socket.on('join', function(msg){
@@ -28,6 +34,11 @@ io.on('connection', function(socket){
     users[name] = name;
     sockets[socket.id] = socket;
     broadcastUsers();
+  });
+
+  socket.on('send-message', function(msg){
+    msg.name = name;
+    broadcastNewMessage(msg);
   });
 
   socket.on('disconnect', function(){
